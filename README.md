@@ -4,26 +4,28 @@
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/thettler/laravel-console-toolkit/run-tests?label=tests)](https://github.com/thettler/laravel-console-toolkit/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/thettler/laravel-console-toolkit/Check%20&%20fix%20styling?label=code%20style)](https://github.com/thettler/laravel-console-toolkit/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/thettler/laravel-console-toolkit.svg?style=flat-square)](https://packagist.org/packages/thettler/laravel-console-toolkit)
+[![PHP Version](https://img.shields.io/packagist/php-v/thettler/laravel-console-toolkit?style=flat-square)](https://packagist.org/packages/thettler/laravel-console-toolkit)
+
 
 ![Header Image](/.github/header_img.png)
 
-This package makes it even easier to write maintainable and expressive Artisan commands with argument/option casting,
+This package makes it even easier to write maintainable and expressive Artisan commands, with argument/option casting,
 validation and autoAsk. Also, it lets you define your arguments/options with simple properties and attributes for better
 ide support and static analysis. And all this with a single trait.
 
 ## 🤯 Features
 
-All the features with on look:
+All the features:
 
-| Support  | Name                  | Description                                                                                                              |
-|:--------:|:----------------------|--------------------------------------------------------------------------------------------------------------------------|
-|    ☑️    | Laravel Features      | Supports everything laravel can do                                                                                       |
-|    ☑️    | Attribute Syntax      | Use PHP-Attributes to automatically define your inputs based on types                                                    |
-|    ☑️    | Casting               | Automatically cast your inputs to Enums, Models, Objects or anything you want                                            |
-|    ☑️    | Validation            | Use the Laravel Validator to validate the inputs from the console                                                        |
-|    ☑️    | Auto Ask              | If the user provides an invalid value toolkit will ask again for a valid value without the need to run the command again |
-|    ☑️    | Negatable Options     | Options can be specified as opposites: --dry or --no-dry                                                                 |
-|    ☑️    | Option required Value | Options can have required values                                                                                         |
+| Support | Name                  | Description                                                                                                              |
+|:-------:|:----------------------|--------------------------------------------------------------------------------------------------------------------------|
+|    ✅    | Laravel Features      | Supports everything laravel can do                                                                                       |
+|    ✅    | Attribute Syntax      | Use PHP-Attributes to automatically define your inputs based on types                                                    |
+|    ✅    | Casting               | Automatically cast your inputs to Enums, Models, Objects or anything you want                                            |
+|    ✅    | Validation            | Use the Laravel Validator to validate the inputs from the console                                                        |
+|    ✅    | Auto Ask              | If the user provides an invalid value toolkit will ask again for a valid value without the need to run the command again |
+|    ✅    | Negatable Options     | Options can be specified as opposites: --dry or --no-dry                                                                 |
+|    ✅    | Option required Value | Options can have required values                                                                                         |
 
 ## :purple_heart:  Support me
 
@@ -133,9 +135,9 @@ class BasicCommand extends Command
 {
     protected $signature = 'basic';
 
-    protected $description = 'Some usefull description.';
+    protected $description = 'Some useful description.';
 
-    protected $help = 'Some helpfull text.';
+    protected $help = 'Some helpful text.';
     
     protected $hidden = true;
     ...
@@ -751,7 +753,7 @@ The enum cast will automatically cast every typed enum to this enum. But you can
     protected Enum $enum;
 ```
 
-### Array Cast
+#### Array Cast
 
 If you have an array and want to cast all its values to a specific type you can use the ArrayCaster. It expects a caster
 and a specific type:
