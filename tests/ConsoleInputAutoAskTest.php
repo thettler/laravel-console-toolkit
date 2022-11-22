@@ -66,6 +66,29 @@ it('only asks for options if there is an required value', function () {
         ->assertSuccessful();
 });
 
+it('only asks for options if there is an required value and the option is used', function () {
+    $command = new class () extends Command {
+        use UsesConsoleToolkit;
+
+        protected $name = 'ask:me';
+
+        #[Option]
+        public string $required;
+
+        public function handle()
+        {
+            $this->line('Some Text');
+        }
+    };
+
+    Artisan::starting(fn (Artisan $artisan) => $artisan->add($command));
+
+    \Pest\Laravel\artisan('ask:me --required')
+        ->expectsQuestion('Please enter "required"', 'Swiss')
+        ->expectsOutput('Some Text')
+        ->assertSuccessful();
+});
+
 it('can give choices if missing input', function () {
     $command = new class () extends Command {
         use UsesConsoleToolkit;

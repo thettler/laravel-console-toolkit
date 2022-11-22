@@ -208,7 +208,6 @@ trait UsesConsoleToolkit
             $option->hasRequiredValue() => $this->makeInputOption(
                 $option,
                 $option->isAutoAskEnabled() ? InputOption::VALUE_OPTIONAL : InputOption::VALUE_REQUIRED,
-                $option->isAutoAskEnabled() ? '$__not_provided__$' : null
             ),
 
             $option->hasValue() => $this->makeInputOption(
