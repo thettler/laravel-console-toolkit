@@ -36,6 +36,9 @@ class CommandReflection
         return $this->getArguments()->isNotEmpty() || $this->getOptions()->isNotEmpty();
     }
 
+    /**
+     * @return Collection<int, ArgumentReflection>
+     */
     public function getArguments(): Collection
     {
         return collect($this->reflection->getProperties())
@@ -49,6 +52,9 @@ class CommandReflection
             );
     }
 
+    /**
+     * @return Collection<int, OptionReflection>
+     */
     public function getOptions(): Collection
     {
         return collect($this->reflection->getProperties())

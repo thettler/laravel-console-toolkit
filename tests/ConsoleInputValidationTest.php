@@ -2,6 +2,8 @@
 
 use Illuminate\Console\Application as Artisan;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\App;
+use Illuminate\Translation\Translator;
 use Thettler\LaravelConsoleToolkit\Attributes\Argument;
 use Thettler\LaravelConsoleToolkit\Attributes\Option;
 use Thettler\LaravelConsoleToolkit\Concerns\UsesConsoleToolkit;
@@ -30,15 +32,17 @@ it('can add validation to console inputs', function () {
 
         public function handle()
         {
-            $this->line($this->shortArgument . ' ' . $this->shortOption);
+            $this->line($this->shortArgument.' '.$this->shortOption);
         }
     };
 
     Artisan::starting(fn (Artisan $artisan) => $artisan->add($command));
 
+    $translator = App::make(Translator::class);
+
     \Pest\Laravel\artisan('validate LongerThan5 --shortOption=alsoLonger')
-        ->expectsOutput('The short argument must not be greater than 5 characters.')
-        ->expectsOutput('The short option must not be greater than 5 characters.')
+        ->expectsOutput($translator->get('validation.max.string', ['attribute' => 'short argument', 'max' => 5]))
+        ->expectsOutput($translator->get('validation.max.string', ['attribute' => 'short option', 'max' => 5]))
         ->doesntExpectOutput('LongerThan5 alsoLonger')
         ->assertFailed();
 });
@@ -59,7 +63,7 @@ it('can sets automatic enum rules', function () {
 
         public function handle()
         {
-            $this->line($this->A->name . ' ' . $this->O->value);
+            $this->line($this->A->name.' '.$this->O->value);
         }
     };
 
@@ -68,14 +72,14 @@ it('can sets automatic enum rules', function () {
     \Pest\Laravel\artisan('validate notValid --O=notValid')
         ->expectsOutput('The selected a is invalid.')
         ->expectsOutput('Possible values for: A.')
-        ->expectsOutput('   - ' . Enum::A->name)
-        ->expectsOutput('   - ' . Enum::B->name)
-        ->expectsOutput('   - ' . Enum::C->name)
+        ->expectsOutput('   - '.Enum::A->name)
+        ->expectsOutput('   - '.Enum::B->name)
+        ->expectsOutput('   - '.Enum::C->name)
         ->expectsOutput('The selected o is invalid.')
         ->expectsOutput('Possible values for: O.')
-        ->expectsOutput('   - ' . StringEnum::A->value)
-        ->expectsOutput('   - ' . StringEnum::B->value)
-        ->expectsOutput('   - ' . StringEnum::C->value)
+        ->expectsOutput('   - '.StringEnum::A->value)
+        ->expectsOutput('   - '.StringEnum::B->value)
+        ->expectsOutput('   - '.StringEnum::C->value)
         ->assertFailed();
 });
 
@@ -105,7 +109,7 @@ it('can add custom validation messages', function () {
 
         public function handle()
         {
-            $this->line($this->shortArgument . ' ' . $this->shortOption);
+            $this->line($this->shortArgument.' '.$this->shortOption);
         }
     };
 
