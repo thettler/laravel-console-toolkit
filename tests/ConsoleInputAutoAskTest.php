@@ -2,6 +2,8 @@
 
 use Illuminate\Console\Application as Artisan;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\App;
+use Illuminate\Translation\Translator;
 use Thettler\LaravelConsoleToolkit\Attributes\Argument;
 use Thettler\LaravelConsoleToolkit\Attributes\Option;
 use Thettler\LaravelConsoleToolkit\Concerns\UsesConsoleToolkit;
@@ -143,11 +145,12 @@ it('can ask if validation fails', function () {
     };
 
     Artisan::starting(fn (Artisan $artisan) => $artisan->add($command));
+    $translator = App::make(Translator::class);
 
     \Pest\Laravel\artisan('validate LongerThan5 --shortOption=alsoLonger')
-        ->expectsOutput('The short argument must not be greater than 5 characters.')
+        ->expectsOutput($translator->get('validation.max.string', ['attribute' => 'short argument', 'max' => 5]))
         ->expectsQuestion('Please enter "shortArgument"', 'short')
-        ->expectsOutput('The short option must not be greater than 5 characters.')
+        ->expectsOutput($translator->get('validation.max.string', ['attribute' => 'short option', 'max' => 5]))
         ->expectsQuestion('Please enter "shortOption"', 'small')
         ->expectsOutput('short small')
         ->assertSuccessful();
