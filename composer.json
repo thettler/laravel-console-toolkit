@@ -24,7 +24,7 @@
     "require-dev": {
         "laravel/sail": "^1.13",
         "nunomaduro/collision": "^v6.1.0",
-        "nunomaduro/larastan": "^1.0",
+        "nunomaduro/larastan": "^2.0",
         "orchestra/testbench": "^7.0|^8.0",
         "pestphp/pest": "^1.21",
         "pestphp/pest-plugin-laravel": "^1.4",
