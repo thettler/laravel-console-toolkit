@@ -1,8 +1,9 @@
 # Laravel Console Toolkit
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/thettler/laravel-console-toolkit.svg?style=flat-square)](https://packagist.org/packages/thettler/laravel-console-toolkit)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/thettler/laravel-console-toolkit/run-tests?label=tests)](https://github.com/thettler/laravel-console-toolkit/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/thettler/laravel-console-toolkit/Check%20&%20fix%20styling?label=code%20style)](https://github.com/thettler/laravel-console-toolkit/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
+[![GitHub Tests Action Status](https://github.com/thettler/laravel-console-toolkit/actions/workflows/run-tests.yml/badge.svg)](https://github.com/thettler/laravel-console-toolkit/actions/workflows/run-tests.yml)
+[![GitHub Code Style Action Status](https://github.com/thettler/laravel-console-toolkit/actions/workflows/php-cs-fixer.yml/badge.svg)](https://github.com/thettler/laravel-console-toolkit/actions/workflows/php-cs-fixer.yml)
+[![PHPStan](https://github.com/thettler/laravel-console-toolkit/actions/workflows/phpstan.yml/badge.svg)](https://github.com/thettler/laravel-console-toolkit/actions/workflows/phpstan.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/thettler/laravel-console-toolkit.svg?style=flat-square)](https://packagist.org/packages/thettler/laravel-console-toolkit)
 [![PHP Version](https://img.shields.io/packagist/php-v/thettler/laravel-console-toolkit?style=flat-square)](https://packagist.org/packages/thettler/laravel-console-toolkit)
 
