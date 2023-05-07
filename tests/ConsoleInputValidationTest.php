@@ -36,7 +36,7 @@ it('can add validation to console inputs', function () {
         }
     };
 
-    Artisan::starting(fn(Artisan $artisan) => $artisan->add($command));
+    Artisan::starting(fn (Artisan $artisan) => $artisan->add($command));
 
     $translator = App::make(Translator::class);
 
@@ -67,7 +67,7 @@ it('can sets automatic enum rules', function () {
         }
     };
 
-    Artisan::starting(fn(Artisan $artisan) => $artisan->add($command));
+    Artisan::starting(fn (Artisan $artisan) => $artisan->add($command));
 
     \Pest\Laravel\artisan('validate notValid --O=notValid')
         ->expectsOutput('The selected a is invalid.')
@@ -113,7 +113,7 @@ it('can add custom validation messages', function () {
         }
     };
 
-    Artisan::starting(fn(Artisan $artisan) => $artisan->add($command));
+    Artisan::starting(fn (Artisan $artisan) => $artisan->add($command));
 
     \Pest\Laravel\artisan('validate LongerThan5 --shortOption=alsoLonger')
         ->expectsOutput('This argument short argument is to long for you boy.')
